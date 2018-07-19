@@ -13,13 +13,6 @@ spec:
         k8s-app: stashcache
     spec:
       hostNetwork: true
-      env:
-      - name: DATA1
-        value: /data1
-      - name: DATA2
-        value: /data2
-      - name: DATA3
-        value: /data3
       nodeSelector:
         kubernetes.io/hostname: gpn-fiona-r740xd-node809.greatplains.net
       initContainers:
@@ -37,6 +30,13 @@ spec:
       - name: stashcache
         image: efajardo/prp-stashcache
         imagePullPolicy: Always
+        env:
+        - name: DATA1
+          value: /data1
+        - name: DATA2
+          value: /data2
+        - name: DATA3
+          value: /data3
         volumeMounts:
         - name: certs
           mountPath: /etc/grid-security/xrd
